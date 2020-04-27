@@ -1,0 +1,54 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<List<ActiveTrail.BusinessLogic.Billing.SMS.ATSS.SMSMessageQueueInfo>>
+
+<ol class="breadcrumb">
+    <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+    <li class="active">Messages</li>
+</ol>
+
+<div class="page-header">
+    <h1>Messages</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>ProxyType</th>
+                    <th>CampaignId</th>
+                    <th>FromName</th>
+                    <th>Recipient</th>
+                    <th>Status</th>
+                    <th>AddedOn</th>
+                    <th>UpdatedOn</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Token</td>
+                        <td>@item.ProxyType</td>
+                        <td>@item.CampaignId</td>
+                        <td>@item.FromName</td>
+                        <td>@item.RecipientNumber</td>
+                        <td>@item.Status</td>
+                        <td>@item.AddedOn</td>
+                        <td>@item.UpdatedOn</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <nav>
+            <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

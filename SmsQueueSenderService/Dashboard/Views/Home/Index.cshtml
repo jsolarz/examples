@@ -1,0 +1,64 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Activetrail.SmsQueueSenderService.Dashboard.Models.SmsCounters>
+
+<ol class="breadcrumb">
+    <li class="active"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</li>
+</ol>
+
+@foreach (var item in Model.Proxies)
+{
+    string color = item.Proxy == ActiveTrail.Framework.Core.TypesSmsProxyTypes.Sms019 ? "panel-primary" : "panel-success";
+    <h1><a href="@string.Format("/messages/{0}", item.Proxy)">@item.Proxy</a></h1>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel @(color)">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Messages</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="text-center"><a href="@string.Format("/messages/{0}", item.Proxy)">@item.Total</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel @(color)">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Sent</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="text-center"><a href="@string.Format("/messages/{0}/Sent", item.Proxy)">@item.TotalSent</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel @(color)">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Last Hour</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="text-center">@item.TotalLastHour</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel @(color)">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Day</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="text-center">@item.TotalLastDay</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel @(color)">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Total Last Month</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="text-center">@item.TotalLastMonth</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+}
